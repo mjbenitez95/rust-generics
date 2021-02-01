@@ -1,7 +1,12 @@
+mod lib;
+
 fn main() {
     extract_function();
     generic_data_types();
     generic_struct();
+    println!();
+    
+    lib::traits();
 }
 
 fn extract_function() {
