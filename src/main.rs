@@ -5,7 +5,7 @@ fn main() {
     generic_data_types();
     generic_struct();
     println!();
-    
+
     lib::traits();
 }
 

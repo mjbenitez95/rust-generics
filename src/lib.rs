@@ -1,5 +1,7 @@
+use core::fmt::{Debug, Display};
+
 pub trait Summary {
-    fn summarize_author(&self) -> String; 
+    fn summarize_author(&self) -> String;
 
     fn summarize(&self) -> String {
         format!("(Read more from {}...)", self.summarize_author())
@@ -30,6 +32,25 @@ impl Summary for NewsArticle {
     fn summarize_author(&self) -> String {
         format!("{}", self.author)
     }
+}
+
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+/*
+    the above is shorthand for, and equivalent to:
+        pub fn notify<T: Summary>(item: &t)
+
+    we can also add another trait by using '+':
+        pub fn notify(item: &impl Summary + Display))
+*/
+
+pub fn where_clauses<T, U>(t: &T, u: &U)
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
 }
 
 pub fn traits() {
