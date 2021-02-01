@@ -1,3 +1,4 @@
+mod lifetimes;
 mod traits;
 
 fn main() {
@@ -7,6 +8,8 @@ fn main() {
     println!();
 
     traits::traits();
+    println!();
+
 }
 
 fn extract_function() {
