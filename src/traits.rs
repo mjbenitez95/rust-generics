@@ -84,6 +84,8 @@ pub fn traits() {
 
     println!("New article available! {}", article.summarize());
 
-    println!("New summarizable available! {}", returns_summarizable().summarize());
-
+    println!(
+        "New summarizable available! {}",
+        returns_summarizable().summarize()
+    );
 }
