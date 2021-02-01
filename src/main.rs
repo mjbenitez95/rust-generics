@@ -49,13 +49,13 @@ fn generic_data_types() {
 //     largest
 // }
 
-struct Point<T> {
+struct Point<T, U> {
     x: T,
-    y: T,
+    y: U,
 }
 
 fn generic_struct() {
     let integer = Point { x: 5, y: 10 };
     let float = Point { x: 1.0, y: 4.0 };
-    // let wont_work = Point { x: 5, y: 4.0 };
+    let will_work = Point { x: 5, y: 4.0 };
 }
