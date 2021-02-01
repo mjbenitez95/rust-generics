@@ -10,6 +10,8 @@ fn main() {
     traits::traits();
     println!();
 
+    lifetimes::good_lifetime();
+    println!();
 }
 
 fn extract_function() {

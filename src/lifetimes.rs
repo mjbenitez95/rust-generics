@@ -1,12 +1,7 @@
-/*
-    pub fn bad_lifetime() {
-        let r;
-
-        {
-            let x = 5;
-            r = &x;
-        }
-
+pub fn good_lifetime() {
+    {
+        let x = 5;
+        let r = &x;
         println!("r: {}", r);
     }
-*/
+}
