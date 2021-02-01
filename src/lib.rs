@@ -53,6 +53,15 @@ where
 {
 }
 
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("nytimes"),
+        content: String::from("RTX 30 series GPUs are now widely available everywhere!"),
+        reply: false,
+        retweet: false,
+    }
+}
+
 pub fn traits() {
     let tweet = Tweet {
         username: String::from("newegg"),
@@ -74,4 +83,7 @@ pub fn traits() {
     };
 
     println!("New article available! {}", article.summarize());
+
+    println!("New summarizable available! {}", returns_summarizable().summarize());
+
 }
