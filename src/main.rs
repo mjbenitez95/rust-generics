@@ -1,4 +1,4 @@
-mod lib;
+mod traits;
 
 fn main() {
     extract_function();
@@ -6,7 +6,7 @@ fn main() {
     generic_struct();
     println!();
 
-    lib::traits();
+    traits::traits();
 }
 
 fn extract_function() {
