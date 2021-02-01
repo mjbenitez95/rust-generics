@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub fn good_lifetime() {
     {
         let x = 5;
@@ -19,12 +21,6 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     } else {
         y
     }
-}
-
-pub fn main() {
-    basic_lifetimes();
-    acceptable_overlapping_lifetimes();
-    lifetimed_struct();
 }
 
 fn basic_lifetimes() {
@@ -90,4 +86,32 @@ fn lifetimed_struct() {
         i.level(),
         i.announce_and_return_part("Our book begins with...")
     );
+}
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+
+fn absolute_longest() {
+    let s1 = String::from("some string");
+    let s2 = String::from("some other really, really long string");
+    println!(
+        "  {}!",
+        longest_with_an_announcement(&s1, &s2, "The absolute_longest() string is: ")
+    );
+}
+
+pub fn main() {
+    basic_lifetimes();
+    acceptable_overlapping_lifetimes();
+    lifetimed_struct();
+    absolute_longest();
 }
