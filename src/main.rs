@@ -11,6 +11,7 @@ fn main() {
     println!();
 
     lifetimes::good_lifetime();
+    lifetimes::main();
     println!();
 }
 
