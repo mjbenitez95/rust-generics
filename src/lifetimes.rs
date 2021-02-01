@@ -61,10 +61,33 @@ struct ImportantExcerpt<'a> {
     part: &'a str,
 }
 
+/*
+    note that these two implemented functions help demonstrate the elision rules
+    by which the compiler infers a lifetime for references as part of methods:
+        1) all inputs get a unique lifetime
+        2) if there's only one input, the output shares its lifetime
+        3) if one of the inputs is &self, the output shares the lifetime of the object
+*/
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
+}
+
 fn lifetimed_struct() {
     let novel = String::from("Call me Ishmael. Some years ago...");
     let first_sentence = novel.split('.').next().expect("Could not find a '.'");
     let i = ImportantExcerpt {
         part: first_sentence,
     };
+    println!(
+        "Result of i.level(): {} and i.announce_and_return_part(): {}",
+        i.level(),
+        i.announce_and_return_part("Our book begins with...")
+    );
 }
