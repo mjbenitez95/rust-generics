@@ -35,24 +35,24 @@ fn generic_data_types() {
     let number_list = vec![102, 34, 6000, 89, 54, 2, 43, 8];
     let char_list = vec!['y', 'm', 'a', 'c', 'q', 'e'];
 
-    // let largest_number = largest_generic(&number_list);
-    // let largest_char = largest_generic(&char_list);
+    let largest_number = largest_generic(&number_list);
+    let largest_char = largest_generic(&char_list);
 
-    // println!("The largest number is {}!", largest_number);
-    // println!("The largest char is {}!", largest_char);
+    println!("The largest number is {}!", largest_number);
+    println!("The largest char is {}!", largest_char);
 }
 
-// fn largest_generic<T>(list: &[T]) -> &T {
-//     let mut largest = &list[0];
+fn largest_generic<T: PartialOrd + Copy>(list: &[T]) -> &T {
+    let mut largest = &list[0];
 
-//     for item in list {
-//         if item > largest {
-//             largest = item;
-//         }
-//     }
+    for item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
 
-//     largest
-// }
+    largest
+}
 
 #[derive(Debug)]
 struct Point<T, U> {
